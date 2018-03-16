@@ -18,7 +18,7 @@
     <!--script-->
     <script type="text/javascript">
       function showDetail(){
-        location.href("detail.php");
+        location.href="detail.php";
       }
     </script>
   </head>
@@ -41,7 +41,8 @@
               <h4 class="text-white">MENU</h4>
               <ul class="list-unstyled">
                 <li><a href="login.php" class="text-white">Login</a></li>
-                <li><a href="#" class="text-white">My Page</a></li>
+                <li><a href="join.php" class="text-white">Join</a></li>
+                <li><a href="mypage.php" class="text-white">My Page</a></li>
                 <li><a href="#" class="text-white">Cart</a></li>
               </ul>
             </div>
