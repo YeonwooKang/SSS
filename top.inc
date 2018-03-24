@@ -1,10 +1,10 @@
 <?php
-  if(session_status()!=PHP_SESSION_ACTIVE){
+if (session_status() == PHP_SESSION_NONE) {
     session_start();
-  }
+}
 ?>
 <!doctype html>
-<html lang="ko">
+<html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,13 +19,8 @@
 
     <!-- Custom styles for this template -->
 
-
     <!--script-->
-    <script type="text/javascript">
-      function showDetail(){
-        location.href="detail.php";
-      }
-    </script>
+
   </head>
 
   <body>
@@ -37,15 +32,16 @@
             <div class="col-sm-8 col-md-7 py-4">
               <h4 class="text-white">PRODUCTS</h4>
                 <ul class="list-unstyled">
-                <li><a href="#" class="text-white">All</a></li>
-                <li><a href="#" class="text-white">Top</a></li>
-                <li><a href="#" class="text-white">Bottom</a></li>
-                <li><a href="#" class="text-white">Dress</a></li>
+                <li><a href="index.php?action=alllist" class="text-white">All</a></li>
+                <li><a href="index.php?action=toplist" class="text-white">Top</a></li>
+                <li><a href="index.php?action=bottomlist" class="text-white">Bottom</a></li>
+                <li><a href="index.php?action=dresslist" class="text-white">Dress</a></li>
             </div>
             <div class="col-sm-4 offset-md-1 py-4">
               <h4 class="text-white">MENU</h4>
               <ul class="list-unstyled">
                 <?php   
+
                   if(!isset($_SESSION['id'])) {
                     print '<li><a href="index.php?action=loginform" class="text-white">Login</a></li>';
                     print '<li><a href="index.php?action=joinform" class="text-white">Join</a></li>';

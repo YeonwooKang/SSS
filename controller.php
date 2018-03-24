@@ -7,14 +7,29 @@
 	// this class would be used at the index.php
 	class UserController {
 		private $uService;
+		private $pService;
+
 		private $action;
 		private $data;
 		private $view;
+		
 		private $u;
+
+		private $pList;
+		private $tList;
+		private $bList;
+		private $dList;
+
+		private $p;
+
+
+		private $detailList;
 
 		// Constructor
 		public function __construct($action) {
 			$this->uService = new UserService();
+			$this->pService = new ProductService();
+			$this->pList = $this->pService->getProductList();
 			$this->action = $action;
 		}
 
@@ -37,7 +52,11 @@
 					break;
 
 				case "main":
-					$this->main();
+					$this->mainpage();
+					break;
+
+				case "detail":
+					$this->detail();
 					break;
 
 				case "mypage":
@@ -54,6 +73,22 @@
 
 				case "out":
 					$this->out();
+					break;
+
+				case "toplist":
+					$this->topList();
+					break;
+
+				case "bottomlist":
+					$this->bottomList();
+					break;
+
+				case "dresslist":
+					$this->dressList();
+					break;	
+
+				case "alllist":
+					$this->allList();
 					break;
 
 				default:
@@ -123,15 +158,70 @@
 			$this->view="login.php";
 		}
 
-		public function main() {
-			$this->view="main.php";
+		public function mainpage() {
+			$this->pList = $this->pService->getProductList();
+			$this->data = $this->pList;
+			$this->view = "main.php";
+		}
+
+		public function topList() {
+			$this->tList = $this->pService->getTopList();
+			$this->data = $this->tList;
+			$this->view = "toplist.php";
+		}
+
+		public function bottomList() {
+			$this->bList = $this->pService->getBottomList();
+			$this->data = $this->bList;
+			$this->view = "bottomlist.php";
+		}
+
+		public function dressList() {
+			$this->dList = $this->pService->getDressList();
+			$this->data = $this->dList;
+			$this->view = "dresslist.php";
+		}	
+
+		public function allList() {
+			$this->pList = $this->pService->getProductList();
+			$this->data = $this->pList;
+			$this->view = "alllist.php";			
+		}	
+
+		public function detail() {
+			$pid = $_POST['pid'];
+			$pname = $_POST['pname'];
+			$price = $_POST['price'];
+
+			$type = substr($pid, 0, 1);
+
+			switch ($type) {
+				case 'T':
+					$this->detailList = $this->pService->getTopDetailList($pid, $pname, $price);
+					break;
+				
+				case 'B':
+					$this->detailList = $this->pService->getBottomDetailList($pid, $pname, $price);
+					break;
+
+				case 'D':
+					$this->detailList = $this->pService->getDressDetailList($pid, $pname, $price);
+					break;
+
+				default:
+					# code...
+					break;
+			}
+
+			$this->data = $this->detailList;
+			$this->view = "detail.php";
 		}
 
 		public function mypage() {
 			$id = $_GET['id'];
 			$this->u = $this->uService->getUser($id);
 			$this->data = $this->u;
-			$this->view="mypage.php";
+			$this->view = "mypage.php";
 		}
 
 		public function editinfo() {

@@ -67,4 +67,72 @@
 			return $this->dao->select($id);
 		}
 	}
+
+	class ProductService {
+		private $dao;
+
+		// Product Lists
+		private $productList = array();
+		private $topList = array();
+		private $bottomList = array();
+		private $dressList = array();
+
+		// Detail Lists
+		private $topDetailList = array();
+		private $dressDetailList = array();
+		private $bottomDetailList = array();
+
+		public function __construct() {
+			$this->dao = new ProductDao();
+		}
+
+		// get each product instance from DB and add to the arrayList
+		// finally, return the array List to main.php or all.php to display
+		public function getProductList() {
+			$this->productList = $this->dao->selectAll();
+
+			return $this->productList;
+		}
+
+		public function getProduct($pid) {
+			return $this->dao->select($pid);
+		}
+
+		public function getTopList() {
+			$this->topList = $this->dao->selectAllTop();
+
+			return $this->topList;
+		}
+
+		public function getBottomList() {
+			$this->bottomList = $this->dao->selectAllBottom();
+
+			return $this->bottomList;
+		}	
+
+		public function getDressList() {
+			$this->dressList = $this->dao->selectAllDress();
+
+			return $this->dressList;
+		}				
+
+		public function getTopDetailList($pid, $pname, $price) {
+			$this->topDetailList = $this->dao->selectTopDetailAll($pid, $pname, $price);
+
+			return $this->topDetailList;
+		}
+
+		public function getDressDetailList($pid, $pname, $price) {
+			$this->dressDetailList = $this->dao->selectDressDetailAll($pid, $pname, $price);
+
+			return $this->dressDetailList;
+		}
+
+		public function getBottomDetailList($pid, $pname, $price) {
+			$this->bottomDetailList = $this->dao->selectBottomDetailAll($pid, $pname, $price);
+
+			return $this->bottomDetailList;
+		}
+
+	}
 ?>

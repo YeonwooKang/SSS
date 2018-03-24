@@ -142,4 +142,235 @@ class UserDao {
 
 }
 
+// Product database connection object
+class ProductDao {
+
+	// connection object
+	private $pdo = null;
+
+	// Connectiong method
+	public function connect() {
+		try{
+			$this->pdo = new PDO('mysql:host=awsdb.crqri6xcz2ih.ap-northeast-2.rds.amazonaws.com;dbname=awsdb;charset=utf8', 'root', 'ywmj2015');
+			$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			$this->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+		}catch (PDOException $e){
+			print $e->getMessage();
+		}
+	}
+
+	// Disconnectiong method
+	public function disconnect() {
+		$this->pdo = null;
+	}
+
+	// would be used to get product detail info
+	public function select($id) {
+		$p = null;
+		$this->connect(); // connect db
+
+		try{
+			$sql = "SELECT * FROM Product WHERE id=?";
+			
+			$stm = $this->pdo->prepare($sql);
+
+			$stm->bindValue(1, $id);
+
+			$stm->execute();
+
+			$cnt = $stm->rowCount();
+
+			// if the row's count is over 0
+			if($cnt > 0 ) {
+				$row = $stm->fetch(PDO::FETCH_ASSOC);
+				$p = new Product($row['id'], $row['name'], $row['price']);	
+			}
+
+		} catch (PDOException $e){
+			print $e->getMessage();
+		}
+
+		$this->disconnect(); // disconnect
+
+		return $p; // return product instance
+	}
+
+	// would be used to get all products
+	public function selectAll() {
+		$arr = new ProductList();
+		$this->connect();
+		$sql = "SELECT * FROM Product";
+
+		try {
+			$result = $this->pdo->query($sql);
+			$cnt = $result->rowCount();
+
+			if($cnt > 0) {
+				while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+					$p = new Product($row['id'], $row['name'], $row['price']);
+					$arr->add($p);
+				}
+			}
+
+		} catch (PDOException $e) {
+			print $e->getMessage();
+		}
+
+		$this->disconnect();
+
+		return $arr;
+	}
+
+	public function selectAllTop() {
+		$arr = new ProductList();
+		$this->connect();
+		$sql = "SELECT * FROM Product WHERE id LIKE 'T%'";
+
+		try {
+			$result = $this->pdo->query($sql);
+			$cnt = $result->rowCount();
+
+			if($cnt > 0) {
+				while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+					$t = new Product($row['id'], $row['name'], $row['price']);
+					$arr->add($t);
+				}
+			}
+
+		} catch (PDOException $e) {
+			print $e->getMessage();
+		}
+
+		$this->disconnect();
+
+		return $arr;
+	}	
+
+	public function selectAllBottom() {
+		$arr = new ProductList();
+		$this->connect();
+		$sql = "SELECT * FROM Product WHERE id LIKE 'B%'";
+
+		try {
+			$result = $this->pdo->query($sql);
+			$cnt = $result->rowCount();
+
+			if($cnt > 0) {
+				while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+					$b = new Product($row['id'], $row['name'], $row['price']);
+					$arr->add($b);
+				}
+			}
+
+		} catch (PDOException $e) {
+			print $e->getMessage();
+		}
+
+		$this->disconnect();
+
+		return $arr;
+	}		
+
+	public function selectAllDress() {
+		$arr = new ProductList();
+		$this->connect();
+		$sql = "SELECT * FROM Product WHERE id LIKE 'D%'";
+
+		try {
+			$result = $this->pdo->query($sql);
+			$cnt = $result->rowCount();
+
+			if($cnt > 0) {
+				while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+					$d = new Product($row['id'], $row['name'], $row['price']);
+					$arr->add($d);
+				}
+			}
+
+		} catch (PDOException $e) {
+			print $e->getMessage();
+		}
+
+		$this->disconnect();
+
+		return $arr;
+	}	
+
+	public function selectTopDetailAll($pid, $pname, $price) {
+		$arr = new TopDetailList();
+		$this->connect();
+		$sql = "SELECT * FROM Top WHERE id= '" . $pid ."'";
+
+		try {
+			$result = $this->pdo->query($sql);
+			$cnt = $result->rowCount();
+
+			if($cnt > 0) {
+				while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+					$t = new Top($pid, $pname, $price, $row['size'], $row['toplength'], $row['shoulder'], $row['chest'], $row['armhole'], $row['arm'], $row['instock']);
+					$arr->add($t);
+				}
+			} 
+
+		} catch(PDOException $e) {
+			print $e->getMessage();
+		}
+
+		$this->disconnect();
+
+		return $arr;
+	}
+
+	public function selectDressDetailAll($pid, $pname, $price) {
+		$arr = new DressDetailList();
+		$this->connect();
+		$sql = "SELECT * FROM Dress WHERE id= '" . $pid ."'";
+
+		try {
+			$result = $this->pdo->query($sql);
+			$cnt = $result->rowCount();
+
+			if($cnt > 0) {
+				while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+					$d = new Dress($pid, $pname, $price, $row['size'], $row['dresslength'], $row['shoulder'], $row['chest'], $row['armhole'], $row['arm'], $row['instock']);
+					$arr->add($d);
+				}
+			} 
+
+		} catch(PDOException $e) {
+			print $e->getMessage();
+		}
+
+		$this->disconnect();
+
+		return $arr;
+	}
+
+	public function selectBottomDetailAll($pid, $pname, $price) {
+		$arr = new DressDetailList();
+		$this->connect();
+		$sql = "SELECT * FROM Bottom WHERE id= '" . $pid ."'";
+
+		try {
+			$result = $this->pdo->query($sql);
+			$cnt = $result->rowCount();
+
+			if($cnt > 0) {
+				while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+					$b = new Bottom($pid, $pname, $price, $row['size'], $row['bottomlength'], $row['waist'], $row['hip'], $row['thigh'], $row['crotch'], $row['instock']);
+					$arr->add($b);
+				}
+			} 
+
+		} catch(PDOException $e) {
+			print $e->getMessage();
+		}
+
+		$this->disconnect();
+
+		return $arr;
+	}	
+
+}
+
 ?>

@@ -9,41 +9,15 @@ $productList = $this->pList;
 $cnt = $productList->getLength();
 
 ?>
-    <main role="main">
-
-      <section>
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-          </ol>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img class="d-block w-100" src="holder.js/300px500?theme=thumb&bg=55595c&fg=eceeef&text=Image1" alt="First slide">
-            </div>
-            <div class="carousel-item">
-              <img class="d-block w-100" src="holder.js/300px500?theme=thumb&bg=55595c&fg=eceeef&text=Image2" alt="Second slide">
-            </div>
-            <div class="carousel-item">
-              <img class="d-block w-100" src="holder.js/300px500?theme=thumb&bg=55595c&fg=eceeef&text=Image3" alt="Thrid slide">
-            </div>
-          </div>
-          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-
-      </section>
+   <main role="main">
 
       <div class="album py-5 bg-light">
         <div class="container">
-
+          <div class="row">
+            <div class="col-md-6">
+              <h2>All</h2>
+            </div>
+          </div>
           <div class="row">
             <?php 
               for($i=0; $i< $cnt; $i++) {

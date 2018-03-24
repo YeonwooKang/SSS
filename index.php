@@ -2,7 +2,13 @@
 
 	require_once 'controller.php';
 
-	$controller = new UserController($_GET['action']);
+	if(!$_GET) {
+		$controller = new UserController('main');
+
+	} else {
+		$controller = new UserController($_GET['action']);
+	}
+
 
 	$controller->run();
 	

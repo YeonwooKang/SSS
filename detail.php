@@ -1,5 +1,142 @@
 <?php include('top.inc'); ?>
 
+<?php
+  // get Product id and classify its type 
+  // the first letter of id is its type
+  // T:Top, B:Bottom, D:Dress
+
+  // get the first instance of array to display name, price, code
+  $product = $this->detailList->get(0);
+
+  $sizeListTitle = null;
+  $sizeList = null;
+
+  $optionList = null;
+
+  $type = substr($product->getId(), 0, 1);
+  switch ($type) {
+
+    case 'T':
+      $sizeListTitle = array("Length", "Shoulder", "Chest", "Armhole", "Arm");
+
+      for($i=$this->detailList->getLength()-1; $i>=0; $i--) {
+
+        $top = $this->detailList->get($i);
+
+        $sizeList = $sizeList . '<tr>';
+        $sizeList = $sizeList . '<th scope="row">' . $top->getSize() . '</th>';
+        $sizeList = $sizeList . '<td>' . $top->getTopLength() . '</td>';
+        $sizeList = $sizeList . '<td>' . $top->getShoulder() . '</td>';
+        $sizeList = $sizeList . '<td>' . $top->getChest() . '</td>';
+        $sizeList = $sizeList . '<td>' . $top->getArmhole() . '</td>';
+        $sizeList = $sizeList . '<td>' . $top->getArm() . '</td>';
+        $sizeList = $sizeList . '</tr>';
+
+        $optionList = $optionList . '<option>' . $top->getSize() . '</option>';
+
+      }
+
+      // User size info
+      // if session has id
+      if(isset($_SESSION['id'])) {
+        $uService = new UserService();
+        $u = $uService->getUser($_SESSION['id']);
+
+        $sizeList = $sizeList . '<tr  style="color:darkred; font-weight:bold;">';
+        $sizeList = $sizeList . '<th scope="row">' . 'User' . '</th>';
+        $sizeList = $sizeList . '<td>' . $u->getTopLength() . '</td>';
+        $sizeList = $sizeList . '<td>' . $u->getShoulder() . '</td>';
+        $sizeList = $sizeList . '<td>' . $u->getChest() . '</td>';
+        $sizeList = $sizeList . '<td>' . $u->getArmhole() . '</td>';
+        $sizeList = $sizeList . '<td>' . $u->getArm() . '</td>';
+        $sizeList = $sizeList . '</tr>';
+      }      
+
+      break;
+
+    case 'B':
+      $sizeListTitle = array("Length", "Waist", "Hip", "Thigh", "Crotch");
+
+      for($i=$this->detailList->getLength()-1; $i>=0; $i--) {
+
+        $bottom = $this->detailList->get($i);
+
+        $sizeList = $sizeList . '<tr>';
+        $sizeList = $sizeList . '<th scope="row">' . $bottom->getSize() . '</th>';
+        $sizeList = $sizeList . '<td>' . $bottom->getBottomLength() . '</td>';
+        $sizeList = $sizeList . '<td>' . $bottom->getWaist() . '</td>';
+        $sizeList = $sizeList . '<td>' . $bottom->getHip() . '</td>';
+        $sizeList = $sizeList . '<td>' . $bottom->getThigh() . '</td>';
+        $sizeList = $sizeList . '<td>' . $bottom->getCrotch() . '</td>';
+        $sizeList = $sizeList . '</tr>';
+
+        $optionList = $optionList . '<option>' . $bottom->getSize() . '</option>';
+
+      }  
+
+      // User size info
+      // if session has id
+      if(isset($_SESSION['id'])) {
+        $uService = new UserService();
+        $u = $uService->getUser($_SESSION['id']);
+
+        $sizeList = $sizeList . '<tr  style="color:darkred; font-weight:bold;">';
+        $sizeList = $sizeList . '<th scope="row">' . 'User' . '</th>';
+        $sizeList = $sizeList . '<td>' . $u->getBottomLength() . '</td>';
+        $sizeList = $sizeList . '<td>' . $u->getWaist() . '</td>';
+        $sizeList = $sizeList . '<td>' . $u->getHip() . '</td>';
+        $sizeList = $sizeList . '<td>' . $u->getThigh() . '</td>';
+        $sizeList = $sizeList . '<td>' . $u->getCrotch() . '</td>';
+        $sizeList = $sizeList . '</tr>';
+      }        
+
+      break;
+
+    case 'D':
+      $sizeListTitle = array("Length", "Shoulder", "Chest", "Armhole", "Arm");
+
+      for($i=$this->detailList->getLength()-1; $i>=0; $i--) {
+
+        $dress = $this->detailList->get($i);
+
+        $sizeList = $sizeList . '<tr>';
+        $sizeList = $sizeList . '<th scope="row">' . $dress->getSize() . '</th>';
+        $sizeList = $sizeList . '<td>' . $dress->getDressLength() . '</td>';
+        $sizeList = $sizeList . '<td>' . $dress->getShoulder() . '</td>';
+        $sizeList = $sizeList . '<td>' . $dress->getChest() . '</td>';
+        $sizeList = $sizeList . '<td>' . $dress->getArmhole() . '</td>';
+        $sizeList = $sizeList . '<td>' . $dress->getArm() . '</td>';
+        $sizeList = $sizeList . '</tr>';
+
+        $optionList = $optionList . '<option>' . $dress->getSize() . '</option>';
+
+      }
+
+      // User size info
+      // if session has id
+      if(isset($_SESSION['id'])) {
+        $uService = new UserService();
+        $u = $uService->getUser($_SESSION['id']);
+        $dressLength = $u->getTopLength() + $u->getBottomLength();
+        $sizeList = $sizeList . '<tr  style="color:darkred; font-weight:bold;">';
+        $sizeList = $sizeList . '<th scope="row">' . 'User' . '</th>';
+        $sizeList = $sizeList . '<td>' . $dressLength . '</td>';
+        $sizeList = $sizeList . '<td>' . $u->getShoulder() . '</td>';
+        $sizeList = $sizeList . '<td>' . $u->getChest() . '</td>';
+        $sizeList = $sizeList . '<td>' . $u->getArmhole() . '</td>';
+        $sizeList = $sizeList . '<td>' . $u->getArm() . '</td>';
+        $sizeList = $sizeList . '</tr>';            
+      }
+
+      break;
+    
+    default:
+      # code...
+      break;
+  }
+
+?>
+
     <main role="main">
     <div class="album py-5 bg-light">
         <div class="container">
@@ -10,53 +147,28 @@
                   </div>
               </div>
               <div class="col-md-6">
-                 <h1 class="jumbotron-heading">Product</h1>
-                 <p class="lead text-muted">Price: $</p>
-                 <p class="lead text-muted">Color: </p>
+                 <h1 class="jumbotron-heading"> <?php echo $product->getName(); ?> </h1>
+                 <p class="lead text-muted">Price: ₩ <?php echo $product->getPrice(); ?> </p>
+                 <p class="lead text-muted">Code: <?php echo $product->getId(); ?> </p>
                  <div class="py-3">
                  <h3>Size</h3>
                   <select class="form-control form-control-lg col-md-3">
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
+                    <?php echo $optionList; ?>
                   </select>
                   </div>
                   <table class="table table-sm py-3">
                     <thead>
                       <tr>
                         <th scope="col">Size</th>
-                        <th scope="col">기장</th>
-                        <th scope="col">어깨</th>
-                        <th scope="col">가슴</th>
-                        <th scope="col">암홀</th>
-                        <th scope="col">소매</th>
+                        <?php 
+                          for($i = 0; $i < count($sizeListTitle); $i++) {
+                            echo '<th scope="col">' . $sizeListTitle[$i] . '</th>';
+                          }
+                        ?>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">S</th>
-                        <td>39</td>
-                        <td>46.5</td>
-                        <td>17</td>
-                        <td>62</td>
-                        <td>62</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">M</th>
-                        <td>40</td>
-                        <td>49.5</td>
-                        <td>19</td>
-                        <td>63</td>
-                        <td>64</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">L</th>
-                        <td>42</td>
-                        <td>52.5</td>
-                        <td>21</td>
-                        <td>63</td>
-                        <td>66</td>
-                      </tr>
+                      <?php echo $sizeList; ?>
                     </tbody>
                 </table>
                 <div class="text-center py-5">

@@ -181,24 +181,28 @@ class User {
 
 // Top Class
 class Top {
-
-	private $id;
-	private $name;
+	// id+size = primary key
+	private $pid;
+	private $pname;
 	private $price;
-	private $size;
 
 	// Size information
+	private $size;
+
 	private $topLength;
 	private $shoulder;
 	private $chest;
 	private $armhole;
 	private $arm;
 
+	private $instock;
+
 	// Constructor
-	public function __construct($id, $name, $price, $size, $topLength, $shoulder, $chest, $armhole, $arm) {
-		$this->id = $id;
-		$this->name = $name;
+	public function __construct($pid, $pname, $price, $size, $topLength, $shoulder, $chest, $armhole, $arm, $instock) {
+		$this->pid = $pid;
+		$this->pname = $pname;
 		$this->price = $price;
+
 		$this->size = $size;
 
 		$this->topLength = $topLength;
@@ -206,23 +210,25 @@ class Top {
 		$this->chest = $chest;
 		$this->armhole = $armhole;
 		$this->arm = $arm;
+
+		$this->instock = $instock;
 	}
 
-	public function setId($id) {
-		$this->id = $id;
+	public function setId($pid) {
+		$this->pid = $pid;
 	}
 
 	public function getId() {
-		return $this->id;
+		return $this->pid;
 	}
 
-	public function setName($name) {
-		$this->name = $name;
+	public function setName($pname) {
+		$this->pname = $pname;
 	}
 
 	public function getName() {
-		return $this->name;
-	}	
+		return $this->pname;
+	}
 
 	public function setPrice($price) {
 		$this->price = $price;
@@ -230,7 +236,7 @@ class Top {
 
 	public function getPrice() {
 		return $this->price;
-	}	
+	}
 
 	public function setSize($size) {
 		$this->size = $size;
@@ -239,6 +245,10 @@ class Top {
 	public function getSize() {
 		return $this->size;
 	}	
+
+	public function setTopLength($topLength) {
+		$this->topLength = $topLength;
+	}
 
 	public function getTopLength() {
 		return $this->topLength;
@@ -275,6 +285,14 @@ class Top {
 	public function getArm() {
 		return $this->arm;
 	}	
+
+	public function setInStock($instock) {
+		$this->instock = $instock;
+	}
+
+	public function getInStock() {
+		return $this->instock;
+	}
 }
 
 // Bottom Class
@@ -292,8 +310,10 @@ class Bottom {
 	private $thigh;
 	private $crotch;
 
+	private $instock;
+
 	// Constructor
-	public function __construct($id, $name, $price, $size, $bottomLength, $waist, $hip, $thigh, $crotch) {
+	public function __construct($id, $name, $price, $size, $bottomLength, $waist, $hip, $thigh, $crotch, $instock) {
 		$this->id = $id;
 		$this->name = $name;
 		$this->price = $price;
@@ -304,6 +324,8 @@ class Bottom {
 		$this->hip = $hip;
 		$this->thigh = $thigh;
 		$this->crotch = $crotch;
+
+		$this->instock = $instock;
 	}
 
 	public function setId($id) {
@@ -377,61 +399,271 @@ class Bottom {
 	public function getCrotch() {
 		return $this->crotch;
 	}	
+
+	public function setInStock($instock) {
+		$this->instock = $instock;
+	}
+
+	public function getInStock() {
+		return $this->instock;
+	}
+
 }
 
 // Dress Class
+class Dress {
+	private $pid;
+	private $pname;
+	private $price;
 
+	private $size;
+
+	// Size information
+	private $dressLength;
+	private $shoulder;
+	private $chest;
+	private $armhole;
+	private $arm;
+
+	private $instock;
+ 
+	// Constructor
+	public function __construct($pid, $pname, $price, $size, $dressLength, $shoulder, $chest, $armhole, $arm, $instock) {
+		$this->pid = $pid;
+		$this->pname = $pname;
+		$this->price = $price;
+		$this->size = $size;
+
+		$this->dressLength = $dressLength;
+		$this->shoulder = $shoulder;
+		$this->chest = $chest;
+		$this->armhole = $armhole;
+		$this->arm = $arm;
+
+		$this->instock = $instock;
+	}
+
+	public function setId($pid) {
+		$this->pid = $pid;
+	}
+
+	public function getId() {
+		return $this->pid;
+	}
+
+	public function setName($pname) {
+		$this->pname = $pname;
+	}
+
+	public function getName() {
+		return $this->pname;
+	}	
+
+	public function setPrice($price) {
+		$this->price = $price;
+	}
+
+	public function getPrice() {
+		return $this->price;
+	}	
+
+	public function setSize($size) {
+		$this->size = $size;
+	}
+
+	public function getSize() {
+		return $this->size;
+	}	
+
+	public function setDressLength($dressLength) {
+		$this->dressLength = $dressLength;
+	}
+
+	public function getDressLength() {
+		return $this->dressLength;
+	}
+
+	public function setShoulder($shoulder) {
+		$this->shoulder = $shoulder;
+	}
+
+	public function getShoulder() {
+		return $this->shoulder;
+	}
+
+	public function setChest($chest) {
+		$this->chest = $chest;
+	}
+
+	public function getChest() {
+		return $this->chest;
+	}
+
+	public function setArmhole($armhole) {
+		$this->armhole = $armhole;
+	}
+
+	public function getArmhole() {
+		return $this->armhole;
+	}
+
+	public function setArm($arm) {
+		$this->arm = $arm;
+	}
+
+	public function getArm() {
+		return $this->arm;
+	}	
+
+	public function setInStock($instock) {
+		$this->instock = $instock;
+	}
+
+	public function getInStock() {
+		return $this->instock;
+	}
+}
 
 // Product Class 
-// It contents all of the products
-// as well as each kinds of clothes lists
+// Would be used to display all clothes on the main page
 class Product {
 
-	// Product lists array
-	private $productList;
-	private $topList;
-	private $bottomList;
-	private $dressList;
+	private $id;
+	private $name;
+	private $price;
 
 	// Constructor
-	public function __construct($productList, $topList, $bottomList, $dressList){
-		$this->productList = $productList;
-		$this->topList = $topList;
-		$this->bottomList = $bottomList;
-		$this->dressList = $dressList;
+	public function __construct($id, $name, $price) {
+		$this->id = $id;
+		$this->name = $name;
+		$this->price = $price;
 	}
 
 	// Getters and sstter
-	function setProductList($productList){
-		$this->productList = $productList;
+	public function setId($id) {
+		$this->id = $id;
 	}
 
-	function getProductList(){
-		return $this->productList;
+	public function getId() {
+		return $this->id;
 	}
 
-	function setTopList($topList){
+	public function setName($name) {
+		$this->id = $id;
+	}
+
+	public function getName() {
+		return $this->name;
+	}
+
+	public function setPrice($price) {
+		$this->price = $price;
+	}
+
+	public function getPrice() {
+		return $this->price;
+	}
+
+}
+
+class ProductList {
+	private $productList;
+
+	public function __construct() {
+		$this->productList = array();
+	}
+
+	public function add($p) {
+		array_push($this->productList, $p);
+	}
+
+	public function get($index) {
+		return $this->productList[$index];
+	}
+
+	public function getLength() {
+		return count($this->productList);
+	}
+}
+
+class TopList{
+	private $topList;
+
+	public function __construct($topList) {
 		$this->topList = $topList;
 	}
 
-	function getTopList(){
-		return $this->topList;
+	// push a Top instance at the end of the array
+	public function add($t){
+		array_push($this->topList, $t);
 	}
 
-	function setBottomList($bottomList){
-		$this->bottomList = $bottomList;
+	public function get($index) {
+		return $this->topList[$index];
+	}
+}
+
+// classes for detail page
+class TopDetailList{
+	private $topDetailList;
+
+	public function __construct() {
+		$this->topDetailList = array();
 	}
 
-	function getBottomList(){
-		return $this->bottomList;
-	}
-		
-	function setDressList($dressList){
-		$this->dressList = $dressList;
+	// push a Top instance at the end of the array
+	public function add($td){
+		array_push($this->topDetailList, $td);
 	}
 
-	function getDressList(){
-		return $this->dressList;
+	public function get($index) {
+		return $this->topDetailList[$index];
+	}
+
+	public function getLength() {
+		return count($this->topDetailList);
+	}
+}
+
+class DressDetailList {
+	private $dressDetailList;
+
+	public function __construct() {
+		$this->dressDetailList = array();
+	}
+
+	// push a Dress instance at the end of the array
+	public function add($dd) {
+		array_push($this->dressDetailList, $dd);
+	}
+
+	public function get($index) {
+		return $this->dressDetailList[$index];
+	}
+
+	public function getLength() {
+		return count($this->dressDetailList);
+	}
+}
+
+class BottomDetailList {
+	private $bottomDetailLst;
+
+	public function __construct() {
+		$this->bottomDetailList = array();
+	}
+
+	// push a Bottom instance at the end of the array
+	public function add($bd) {
+		array_push($this->bottomDetailList, $bd);
+	}
+
+	public function get($index) {
+		return $this->bottomDetailList[$index];
+	}
+
+	public function getLength() {
+		return count($this->bottomDetailList);
 	}
 }
 
