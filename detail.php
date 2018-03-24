@@ -147,11 +147,11 @@
                   </div>
               </div>
               <div class="col-md-6">
-                 <h1 class="jumbotron-heading"> <?php echo $product->getName(); ?> </h1>
+                 <h4> <?php echo $product->getName(); ?> </h4>
                  <p class="lead text-muted">Price: ₩ <?php echo $product->getPrice(); ?> </p>
                  <p class="lead text-muted">Code: <?php echo $product->getId(); ?> </p>
                  <div class="py-3">
-                 <h3>Size</h3>
+                 <h5>Size</h5>
                   <select class="form-control form-control-lg col-md-3">
                     <?php echo $optionList; ?>
                   </select>
