@@ -20,13 +20,13 @@ $cnt = $productList->getLength();
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img class="d-block w-100" src="holder.js/300px500?theme=thumb&bg=55595c&fg=eceeef&text=Image1" alt="First slide">
+              <img class="d-block w-100" src="holder.js/300px500?theme=thumb&bg=55595c&fg=eceeef&text=Smart Size Solution" alt="First slide">
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="holder.js/300px500?theme=thumb&bg=55595c&fg=eceeef&text=Image2" alt="Second slide">
+              <img class="d-block w-100" src="holder.js/300px500?theme=thumb&bg=55595c&fg=eceeef&text=Smart Size Solution" alt="Second slide">
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="holder.js/300px500?theme=thumb&bg=55595c&fg=eceeef&text=Image3" alt="Thrid slide">
+              <img class="d-block w-100" src="holder.js/300px500?theme=thumb&bg=55595c&fg=eceeef&text=Smart Size Solution" alt="Thrid slide">
             </div>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -53,7 +53,7 @@ $cnt = $productList->getLength();
                 echo(
                   '<div class="col-md-4">
                   <div class="card mb-4 box-shadow">
-                    <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Image" alt="Card image cap">
+                    <img class="card-img-top" src="img/'. $p->getId() .'.png" alt="Card image cap">
                     <div class="card-body">
                       <form name="product" method="POST" action="index.php?action=detail">
                         <p class="card-text">' . $p->getName() .'</p>

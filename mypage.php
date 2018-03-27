@@ -3,8 +3,8 @@
 
     <div class="container">
       <div class="py-5 text-center">
-        <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-        <h2>My Page</h2>
+         <img class="mb-5" src="img/logo-big.png" alt="" width="25%" height="25%">
+         <h2>MY PAGE</h2>
         <p class="lead">
           edit your information and click the <em>Update</em> button at the bottom.
         </p>

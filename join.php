@@ -46,7 +46,7 @@
             <hr class="mb-4">
             <div class="mb-4 text-center">
               <button class="btn btn-primary btn-lg" type="submit">Join</button>
-              <button class="btn btn-primary btn-lg" type="reset">Reset</button>
+              <button class="btn btn-secondary btn-lg" type="reset">Reset</button>
             </div>
           </form>
         </div>

@@ -17,7 +17,7 @@
   switch ($type) {
 
     case 'T':
-      $sizeListTitle = array("Length", "Shoulder", "Chest", "Armhole", "Arm");
+      $sizeListTitle = array("총장", "어깨", "가슴", "암홀", "소매");
 
       for($i=$this->detailList->getLength()-1; $i>=0; $i--) {
 
@@ -55,7 +55,7 @@
       break;
 
     case 'B':
-      $sizeListTitle = array("Length", "Waist", "Hip", "Thigh", "Crotch");
+      $sizeListTitle = array("총장", "허리", "엉덩이", "허벅지", "밑위");
 
       for($i=$this->detailList->getLength()-1; $i>=0; $i--) {
 
@@ -81,7 +81,7 @@
         $u = $uService->getUser($_SESSION['id']);
 
         $sizeList = $sizeList . '<tr  style="color:darkred; font-weight:bold;">';
-        $sizeList = $sizeList . '<th scope="row">' . 'User' . '</th>';
+        $sizeList = $sizeList . '<th scope="row">' . $u->getName() . '</th>';
         $sizeList = $sizeList . '<td>' . $u->getBottomLength() . '</td>';
         $sizeList = $sizeList . '<td>' . $u->getWaist() . '</td>';
         $sizeList = $sizeList . '<td>' . $u->getHip() . '</td>';
@@ -93,7 +93,7 @@
       break;
 
     case 'D':
-      $sizeListTitle = array("Length", "Shoulder", "Chest", "Armhole", "Arm");
+      $sizeListTitle = array("총장", "어깨", "가슴", "암홀", "소매");
 
       for($i=$this->detailList->getLength()-1; $i>=0; $i--) {
 
@@ -143,7 +143,7 @@
           <div class="row py-5">
              <div class="col-md-6">
                   <div class="card mb-6 box-shadow">
-                    <img class="card-img-top" data-src="holder.js/100px400?theme=thumb&bg=55595c&fg=eceeef&text=Image" alt="Card image cap">
+                    <img class="card-img-top" src="img/<?php echo $product->getId();?>.png" alt="Card image cap">
                   </div>
               </div>
               <div class="col-md-6">
