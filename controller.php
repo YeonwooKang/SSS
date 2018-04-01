@@ -119,7 +119,7 @@
 
 		// login method
 		public function login() {
-			$code = $this->uService->login($_POST['id'], $_POST['pw']);
+			$code = $this->uService->login($_GET['id'], $_GET['pw']);
 
 			switch ($code) {
 				case 1:
@@ -133,7 +133,7 @@
 					break;
 
 				case 3:
-					$this->data = "User " . $_POST['id'] . " has been logined. Hi!";
+					$this->data = "User " . $_GET['id'] . " has been logined. Hi!";
 					$this->view = "main.php";
 					break;
 				

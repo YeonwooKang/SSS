@@ -43,7 +43,7 @@
         $u = $uService->getUser($_SESSION['id']);
 
         $sizeList = $sizeList . '<tr  style="color:darkred; font-weight:bold;">';
-        $sizeList = $sizeList . '<th scope="row">' . 'User' . '</th>';
+        $sizeList = $sizeList . '<th scope="row">' . $u->getName() . '</th>';
         $sizeList = $sizeList . '<td>' . $u->getTopLength() . '</td>';
         $sizeList = $sizeList . '<td>' . $u->getShoulder() . '</td>';
         $sizeList = $sizeList . '<td>' . $u->getChest() . '</td>';
@@ -119,7 +119,7 @@
         $u = $uService->getUser($_SESSION['id']);
         $dressLength = $u->getTopLength() + $u->getBottomLength();
         $sizeList = $sizeList . '<tr  style="color:darkred; font-weight:bold;">';
-        $sizeList = $sizeList . '<th scope="row">' . 'User' . '</th>';
+        $sizeList = $sizeList . '<th scope="row">' . $u->getName() . '</th>';
         $sizeList = $sizeList . '<td>' . $dressLength . '</td>';
         $sizeList = $sizeList . '<td>' . $u->getShoulder() . '</td>';
         $sizeList = $sizeList . '<td>' . $u->getChest() . '</td>';
