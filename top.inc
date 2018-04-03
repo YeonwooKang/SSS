@@ -26,7 +26,7 @@ if (session_status() == PHP_SESSION_NONE) {
   <body>
 
     <header>
-      <div class="collapse bg-dark" id="navbarHeader">
+      <div class="collapse bg-navy" id="navbarHeader">
         <div class="container">
           <div class="row">
             <div class="col-sm-8 col-md-7 py-4">
@@ -56,10 +56,12 @@ if (session_status() == PHP_SESSION_NONE) {
           </div>
         </div>
       </div>
-      <div class="navbar navbar-dark bg-dark box-shadow">
+      <div class="navbar navbar-navy bg-navy box-shadow">
         <div class="container d-flex justify-content-between">
           <a href="index.php?action=main" class="navbar-brand d-flex align-items-center">
-            <h5 class="nav-logo-font">SSS</h5>
+            <h5 class="nav-logo-font">
+              <img src="assets/nav_logo.png">
+            </h5>
           </a>
           <?php
                 if(isset($_SESSION['id'])) {

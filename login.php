@@ -1,20 +1,20 @@
 <?php include('top.inc');?>
   <main role="main">
-    <div class="text-center album py-5 bg-light">
+    <div class="text-center album py-5">
       <div class="container col-7">
        <form class="form-signin" name="login" method="GET" action="index.php">
-         <img class="mb-5" src="img/logo-big.png" alt="" width="25%" height="25%">
-         <h2>LOG IN</h2>
-         <p class="lead">
-          If you don't have your own account, click <em>Join</em> button at the bottom.
-        </p>
+         <img class="mb-5 form-logo" src="assets/form_logo.png">
+         <h2>Log in</h2>
+         <p class="lead text-muted"><small>
+          To create a new account, click <strong>Join</strong> button at the bottom.
+        </small></p>
          <input type="hidden" name="action" value="login">
          <label for="inputId" class="sr-only">ID</label>
          <input type="text" name="id" id="inputId" class="form-control mb-1" placeholder="ID" required autofocus>
          <label for="inputPassword" class="sr-only">Password</label>
          <input type="password" name="pw" id="inputPassword" class="form-control mb-3" placeholder="Password" required>
-         <button class="btn btn-lg btn-primary btn-block" type="submit">LOG IN</button>
-         <button class="btn btn-lg btn-secondary btn-block" type="button" onClick="location.href='join.php'">JOIN</button>
+         <button class="btn btn-lg btn-emp btn-block" type="submit">Log in</button>
+         <button class="btn btn-lg btn-sub btn-block" type="button" onClick="location.href='join.php'">Join</button>
         </form>
       </div>
     </div>

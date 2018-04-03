@@ -138,7 +138,7 @@
 ?>
 
     <main role="main">
-    <div class="album py-5 bg-light">
+    <div class="album py-5">
         <div class="container">
           <div class="row py-5">
              <div class="col-md-6">
@@ -148,17 +148,17 @@
               </div>
               <div class="col-md-6">
                  <h4> <?php echo $product->getName(); ?> </h4>
-                 <p class="lead text-muted">Price: ₩ <?php echo $product->getPrice(); ?> </p>
-                 <p class="lead text-muted">Code: <?php echo $product->getId(); ?> </p>
+                 <p class="text-muted">Code: <?php echo $product->getId(); ?> </p>
+                 <p class="text-muted">Price: ₩ <?php echo $product->getPrice(); ?> </p>
                  <div class="py-3">
-                 <h5>Size</h5>
-                  <select class="form-control form-control-lg col-md-3">
+                 <h5 class="detail-size-title">Size</h5>
+                  <select class="form-control form-control-lg col-md-2">
                     <?php echo $optionList; ?>
                   </select>
                   </div>
                   <table class="table table-sm py-3">
                     <thead>
-                      <tr>
+                      <tr class="table-title">
                         <th scope="col">Size</th>
                         <?php 
                           for($i = 0; $i < count($sizeListTitle); $i++) {
@@ -172,8 +172,14 @@
                     </tbody>
                 </table>
                 <div class="text-center py-5">
-                  <button type="button" class="btn btn-primary">Buy now</button>
-                  <button type="button" class="btn btn-secondary">Add to cart</button>
+                  <button type="button" class="btn btn-lg btn-sub">
+                    <img class="btn-img" src="assets/card.png">
+                    Buy
+                  </button>
+                  <button type="button" class="btn btn-lg btn-emp">
+                    <img class="btn-img" src="assets/cart.png">
+                    Cart
+                  </button>
                 </div>
               </div>
           </div>

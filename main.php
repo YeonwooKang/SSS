@@ -20,13 +20,13 @@ $cnt = $productList->getLength();
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img class="d-block w-100" src="holder.js/300px500?theme=thumb&bg=55595c&fg=eceeef&text=Smart Size Solution" alt="First slide">
+              <img class="d-block w-100" src="assets/slide1_mobile.png">
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="holder.js/300px500?theme=thumb&bg=55595c&fg=eceeef&text=Smart Size Solution" alt="Second slide">
+              <img class="d-block w-100" src="assets/slide2_mobile.png">
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="holder.js/300px500?theme=thumb&bg=55595c&fg=eceeef&text=Smart Size Solution" alt="Thrid slide">
+              <img class="d-block w-100" src="assets/slide1_mobile.png">
             </div>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -52,21 +52,25 @@ $cnt = $productList->getLength();
 
                 echo(
                   '<div class="col-md-4">
-                  <div class="card mb-4 box-shadow">
-                    <img class="card-img-top" src="img/'. $p->getId() .'.png" alt="Card image cap">
-                    <div class="card-body">
-                      <form name="product" method="POST" action="index.php?action=detail">
-                        <p class="card-text">' . $p->getName() .'</p>
+                    <div class="card mb-4 box-shadow">
+                    <form name="product" method="POST" action="index.php?action=detail">
+                      <div class="product-image-container">
+                      <input type="image" name="submit" class="card-img-top" src="img/'. $p->getId() .'.png">
+                      <div class="overlay">
+                        <div class="text">' . $p->getName() . '</div>
+                      </div>
+                      </div>
+                      <div class="product-card-body">
+                        <p class="card-text">' . $p->getName() .'<small class="text-muted float-right"> ₩' . $p->getPrice() . '</small></p>
+
                         <div class="d-flex justify-content-between align-items-center">
                           <div class="btn-group">
                             <input type="hidden" name="pname" value="' . $p->getName() . '" >
                             <input type="hidden" name="price" value="' . $p->getPrice() . '" >
                             <input type="hidden" name="pid" value="' . $p->getId() . '" >
-                            <input type="submit" class="btn btn-sm btn-outline-secondary" value="Detail">
                           </div>
-                          <small class="text-muted"> ₩' . $p->getPrice() . '</small>
-                        </form>
                       </div>
+                      </form>
                     </div>
                   </div>
                 </div>');

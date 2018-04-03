@@ -3,11 +3,11 @@
 
     <div class="container">
       <div class="py-5 text-center">
-         <img class="mb-5" src="img/logo-big.png" alt="" width="25%" height="25%">
-         <h2>MY PAGE</h2>
-        <p class="lead">
-          edit your information and click the <em>Update</em> button at the bottom.
-        </p>
+         <img class="mb-5 form-logo" src="assets/form_logo.png">
+         <h2>My page</h2>
+         <p class="lead text-muted"><small>
+          You can edit your basic and size information.
+        </small></p>
       </div>
 
       <div class="container row">
@@ -124,16 +124,8 @@
               </div>
             </div>    
 
-            <div class="row">
-              <div class="col-md-4 mb-3">
-              <label for="weight">Weight</label>
-                <input type="text" class="form-control" id="weight" placeholder="" name="weight" value="<?php print $this->u->getWeight();?>"required>
-              </div>
-            </div>   
-
-            <hr class="mb-4">
-            <div class="mb-4 text-center">
-              <button class="btn btn-primary btn-lg" type="submit">Update</button>
+            <div class="mb-4 text-center btn-area">
+              <button class="btn btn-sub btn-lg" type="submit">Update</button>
             </div>
           </form>
         </div>

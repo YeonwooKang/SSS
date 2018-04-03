@@ -1,9 +1,9 @@
- <footer class="text-muted">
+ <footer class="footer text-muted">
       <div class="container">
         <p class="float-right">
-          <a href="#">Back to top</a>
+          <a href="#"><img class="img-back" src="assets/back_top.png"></a>
         </p>
-        <p>2018 Kang Jipsane &copy; All rights reserved.</p>
+        <p class="float-left">2018 S.S.S. &copy; all rights reserved.</p>
       </div>
     </footer>
 
