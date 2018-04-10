@@ -229,9 +229,16 @@
 			$this->u = $this->uService->getUser($id);
 			$this->data = $this->u;
 
-			$this->u->setPw($_POST['pw']);
-			$this->u->setName($_POST['name']);
+			// 안드로이드 앱 연동을 위한 수정 
+			// 비밀번호랑 이름이 없을 때는 업데이트 하지 않음
+			if($_POST['pw']!=NULL) {
+				$this->u->setPw($_POST['pw']);
+			}
 
+			if($_POST['name']!=NULL) {
+				$this->u->setName($_POST['name']);
+			}
+			
 			$this->u->setTopLength($_POST['toplength']);
 			$this->u->setShoulder($_POST['shoulder']);
 			$this->u->setChest($_POST['chest']);
