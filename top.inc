@@ -11,7 +11,7 @@ if (session_status() == PHP_SESSION_NONE) {
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="bootstrap-4.0.0/favicon.ico">
-    
+
     <title>Smart Size Solution</title>
 
     <!-- Bootstrap core CSS -->
@@ -20,11 +20,12 @@ if (session_status() == PHP_SESSION_NONE) {
     <!-- Custom styles for this template -->
     <link href="css/custom.css" rel="stylesheet">
     <!--script-->
+
   </head>
 
   <body>
 
-    <nav class="top-nav fixed-top">
+    <header>
       <div class="collapse bg-navy" id="navbarHeader">
         <div class="container">
           <div class="row">
@@ -55,7 +56,7 @@ if (session_status() == PHP_SESSION_NONE) {
           </div>
         </div>
       </div>
-      <div class="navbar navbar-navy bg-navy">
+      <div class="navbar navbar-navy bg-navy box-shadow">
         <div class="container d-flex justify-content-between">
           <a href="index.php?action=main" class="navbar-brand d-flex align-items-center">
             <h5 class="nav-logo-font">
@@ -72,4 +73,4 @@ if (session_status() == PHP_SESSION_NONE) {
           </button>
         </div>
       </div>
-    </nav>
+    </header>

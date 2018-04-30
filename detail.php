@@ -142,8 +142,8 @@
         <div class="container">
           <div class="row py-5">
              <div class="col-md-6">
-                  <div class="card mb-6">
-                    <img class="product-img-top rounded" src="img/<?php echo $product->getId();?>.png"">
+                  <div class="card mb-6 box-shadow">
+                    <img class="card-img-top" src="img/<?php echo $product->getId();?>.png" alt="Card image cap">
                   </div>
               </div>
               <div class="col-md-6">
@@ -184,6 +184,7 @@
               </div>
           </div>
           <div class="row">
+          <h1>Detail Cuts</h1>
           </div>
         </div>
     </div>

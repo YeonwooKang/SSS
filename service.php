@@ -30,7 +30,7 @@
 				if($u->getPw()==$pw) {
 					session_start(); // session start
 					$_SESSION['id']=$id;
-
+					setcookie('id', $_SESSION['id'], time()+3600, '/');
 					return 3;
 				} else {
 					return 2;
@@ -46,6 +46,7 @@
 			session_unset();
 			session_cache_expire(60);
 			session_destroy();
+			setcookie('id', '', 0, '/');
 		}
 
 		public function out(){
