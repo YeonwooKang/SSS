@@ -1,6 +1,6 @@
 <?php include('top.inc');?>
   <main role="main">
-    <div class="text-center album py-5">
+    <div class="text-center py-5">
       <div class="container col-7">
        <form class="form-signin" name="login" method="GET" action="index.php">
          <img class="mb-5 form-logo" src="assets/form_logo.png">

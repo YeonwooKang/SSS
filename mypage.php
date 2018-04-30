@@ -1,6 +1,6 @@
 <?php include('top.inc');?>
 <body class="bg-light">
-
+  <main role="main">
     <div class="container">
       <div class="py-5 text-center">
          <img class="mb-5 form-logo" src="assets/form_logo.png">
@@ -131,5 +131,5 @@
         </div>
       </div>
     </div>
-
+  </main>
 <?php include('bottom.inc');?>
