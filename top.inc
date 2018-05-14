@@ -16,7 +16,6 @@ if (session_status() == PHP_SESSION_NONE) {
 
     <!-- Bootstrap core CSS -->
     <link href="bootstrap-4.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="css/custom.css" rel="stylesheet">
     <!--script-->
