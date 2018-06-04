@@ -1,4 +1,4 @@
- <footer class="footer text-muted">
+ <footer class="footer text-muted" style="padding-bottom: 150px;">
       <div class="container">
         <p class="float-right">
           <a href="#"><img class="img-back" src="assets/back_top.png"></a>

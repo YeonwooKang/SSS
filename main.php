@@ -9,7 +9,7 @@ $productList = $this->pList;
 $cnt = $productList->getLength();
 
 ?>
-    <main role="main">
+    <main role="main" style="margin-top:-10px;">
 
       <section>
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">

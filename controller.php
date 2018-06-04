@@ -229,8 +229,11 @@
          $this->u = $this->uService->getUser($id);
          $this->data = $this->u;
 
-         $this->u->setPw($_POST['pw']);
-         $this->u->setName($_POST['name']);
+        if($_POST['pw'] != NULL)
+            $this->u->setPw($_POST['pw']);
+            
+        if($_POST['name'] != NULL)
+            $this->u->setName($_POST['name']);
 
          $this->u->setTopLength($_POST['toplength']);
          $this->u->setShoulder($_POST['shoulder']);
