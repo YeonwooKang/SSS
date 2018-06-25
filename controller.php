@@ -249,6 +249,27 @@
 
          $this->u->setHeight($_POST['height']);
 
+         // 사이즈 추천시 가중치를 둘 부분 저장
+         if (strcmp($_POST['top_priority'], 'p_top_length') == 0) {
+            // 상의 길이에 가중치를 둘 경우
+            $this->u->setPriorityTopLength(true);
+            $this->u->setPriorityArm(false);
+         } else {
+            // 상의 소매에 가중치를 둘 경우 
+            $this->u->setPriorityTopLength(false);
+            $this->u->setPriorityArm(true);
+         }
+
+         if (strcmp($_POST['bottom_priority'], 'p_bottom_length') == 0) {
+            // 하의 길이에 가중치를 둘 경우
+            $this->u->setPriorityBottomLength(true);
+            $this->u->setPriorityCrotch(false);
+         } else {
+            // 하의 밑위에 가중치를 둘 경우 
+            $this->u->setPriorityBottomLength(false);
+            $this->u->setPriorityCrotch(true);
+         }
+         
          $this->uService->editInfo($this->u);
          $this->view="mypage.php";
       }

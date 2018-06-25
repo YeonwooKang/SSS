@@ -26,6 +26,9 @@ include('top.inc');
     display:inline-block;
   }
 </style>
+
+
+
 <?php
   // get Product id and classify its type
   // the first letter of id is its type
@@ -37,7 +40,8 @@ include('top.inc');
   $sizeList = null;
   $optionList = null;
   $type = substr($product->getId(), 0, 1);
-
+  $priority_message = null;
+  $p_top_length = null;
   switch ($type) {
 
     case 'T':
@@ -57,6 +61,8 @@ include('top.inc');
         $sizeList = $sizeList . '</tr>';
 
         $optionList = $optionList . '<option value="' . $top->getSize() . '">' . $top->getSize() . '</option>';
+
+
       }
 
       // User size info
@@ -73,6 +79,35 @@ include('top.inc');
         $sizeList = $sizeList . '<td id="U_armhole">' . $u->getArmhole() . '</td>';
         $sizeList = $sizeList . '<td id="U_arm">' . $u->getArm() . '</td>';
         $sizeList = $sizeList . '</tr>';
+
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        // 사용자 치수 선호도 반영하기 위한 변수 //
+        $p_top_length = $u->getPriorityTopLength();
+        $p_top_arm = $u->getPriorityArm();
+        $p_bottom_length = $u->getPriorityBottomLength();        
+        $p_bottom_crotch = $u->getPriorityCrotch();
+
+        if($p_top_length == TRUE) {
+          $priority_message = $priority_message . '<input type="hidden" id="p_top_length" value="0.15">';
+          $priority_message = $priority_message . '<input type="hidden" id="p_top_arm" value="0">';
+        } else if($p_top_arm == TRUE) {
+          $priority_message = $priority_message . '<input type="hidden" id="p_top_length" value="0">';
+          $priority_message = $priority_message . '<input type="hidden" id="p_top_arm" value="0.15">';
+        }
+
+        if($p_bottom_length == TRUE) {
+          $priority_message = $priority_message . '<input type="hidden" id="p_bottom_length" value="0.15">';
+          $priority_message = $priority_message . '<input type="hidden" id="p_bottom_crotch" value="0">';
+        } else if($p_bottom_crotch == TRUE) {
+          $priority_message = $priority_message . '<input type="hidden" id="p_bottom_length" value="0">';
+          $priority_message = $priority_message . '<input type="hidden" id="p_bottom_crotch" value="0.15">';
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
 
       }
 
@@ -113,6 +148,36 @@ include('top.inc');
         $sizeList = $sizeList . '<td id="U_thigh">' . $u->getThigh() . '</td>';
         $sizeList = $sizeList . '<td id="U_crotch">' . $u->getCrotch() . '</td>';
         $sizeList = $sizeList . '</tr>';
+
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        // 사용자 치수 선호도 반영하기 위한 변수 //
+        $p_top_length = $u->getPriorityTopLength();
+        $p_top_arm = $u->getPriorityArm();
+        $p_bottom_length = $u->getPriorityBottomLength();        
+        $p_bottom_crotch = $u->getPriorityCrotch();
+
+        if($p_top_length == true) {
+          $priority_message = $priority_message . '<input type="hidden" id="p_top_length" value="0.15">';
+          $priority_message = $priority_message . '<input type="hidden" id="p_top_arm" value="0">';
+        } else if($p_top_arm == true) {
+          $priority_message = $priority_message . '<input type="hidden" id="p_top_length" value="0">';
+          $priority_message = $priority_message . '<input type="hidden" id="p_top_arm" value="0.15">';
+        }
+
+        if($p_bottom_length == true) {
+          $priority_message = $priority_message . '<input type="hidden" id="p_bottom_length" value="0.15">';
+          $priority_message = $priority_message . '<input type="hidden" id="p_bottom_crotch" value="0">';
+        } else if($p_bottom_crotch == true) {
+          $priority_message = $priority_message . '<input type="hidden" id="p_bottom_length" value="0">';
+          $priority_message = $priority_message . '<input type="hidden" id="p_bottom_crotch" value="0.15">';
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+
       }
 
       break;
@@ -151,6 +216,35 @@ include('top.inc');
         $sizeList = $sizeList . '<td id="U_armhole">' . $u->getArmhole() . '</td>';
         $sizeList = $sizeList . '<td id="U_arm">' . $u->getArm() . '</td>';
         $sizeList = $sizeList . '</tr>';
+     
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        // 사용자 치수 선호도 반영하기 위한 변수 //
+        $p_top_length = $u->getPriorityTopLength();
+        $p_top_arm = $u->getPriorityArm();
+        $p_bottom_length = $u->getPriorityBottomLength();        
+        $p_bottom_crotch = $u->getPriorityCrotch();
+
+        if($p_top_length == true) {
+          $priority_message = $priority_message . '<input type="hidden" id="p_top_length" value="0.15">';
+          $priority_message = $priority_message . '<input type="hidden" id="p_top_arm" value="0">';
+        } else if($p_top_arm == true) {
+          $priority_message = $priority_message . '<input type="hidden" id="p_top_length" value="0">';
+          $priority_message = $priority_message . '<input type="hidden" id="p_top_arm" value="0.15">';
+        }
+
+        if($p_bottom_length == true) {
+          $priority_message = $priority_message . '<input type="hidden" id="p_bottom_length" value="0.15">';
+          $priority_message = $priority_message . '<input type="hidden" id="p_bottom_crotch" value="0">';
+        } else if($p_bottom_crotch == true) {
+          $priority_message = $priority_message . '<input type="hidden" id="p_bottom_length" value="0">';
+          $priority_message = $priority_message . '<input type="hidden" id="p_bottom_crotch" value="0.15">';
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
       }
 
       break;
@@ -159,10 +253,10 @@ include('top.inc');
       # code...
       break;
   }
-
 ?>
 
     <main role="main">
+    <?php echo $priority_message; ?>
     <div class="album py-5">
         <div class="container">
           <div class="row py-5">
@@ -173,7 +267,7 @@ include('top.inc');
                   <div class="container py-5">
                     <h4> <?php echo $product->getName(); ?> </h4><br>
                     <p class="text-muted">Code: <?php echo $product->getId(); ?></p> <input id="type" type="hidden" value="<?php echo $type?>">
-                    <p class="text-muted">Price: ₩ <?php echo $product->getPrice(); ?></p>
+                    <p class="text-muted">Price: \ <?php echo $product->getPrice(); ?></p>
                   </div>
               </div>
               <div class="col-md-6"> <!--"javascript:changeSlectValue(this.value)"-->
@@ -203,18 +297,28 @@ include('top.inc');
                 <div class="col-md content">
                 <script src='https://code.jquery.com/jquery-3.3.1.js'></script>
                 <script>
+
+
                   $("document").ready(function(){
 
-                    // 치수 저장할 변수
+                    var total_result=[];
+                    var user_size=[]; //S, 총장, 어깨, 가슴, 암홀, 소매길이
+                      //S, 총장, 허리, 엉덩이, 허벅지, 밑위
+                    var clothes_S=[]; //S, 가슴, 암홀, 어깨, 총장, 소매길이
+                      //S, 엉덩이, 허벅지, 허리, 밑위, 총장
+                    var clothes_M=[];
+                    var clothes_L=[];
+
+                    // 치수 전체를 저장할 변수
                     var clothes_size=[];
                     // 사용자의 신체 치수를 저장할 변수
-                    var user_size=[];
-                    var type = document.getElementById('type').value;
+                    var type = document.getElementById('type').value; //T,B,D
 
-                    var first_size = document.getElementById('size_select').value; //s
 
                     // 선택된 사이즈 저장할 변수
-                    var size = first_size;
+                    var size = document.getElementById('size_select').value;
+                    console.log('size: '+size);
+
 
                     // 의류의 코드로 구분
                     switch(type) {
@@ -225,6 +329,27 @@ include('top.inc');
                         user_size[2] = document.getElementById('U_chest').innerHTML;
                         user_size[3] = document.getElementById('U_armhole').innerHTML;
                         user_size[4] = document.getElementById('U_arm').innerHTML;
+
+                        clothes_S[0] = 'S';
+                        clothes_S[1] = document.getElementById('S_chest').innerHTML;
+                        clothes_S[2] = document.getElementById('S_armhole').innerHTML;
+                        clothes_S[3] = document.getElementById('S_shoulder').innerHTML;
+                        clothes_S[4] = document.getElementById('S_length').innerHTML;
+                        clothes_S[5] = document.getElementById('S_arm').innerHTML;
+
+                        clothes_M[0] = 'M';
+                        clothes_M[1] = document.getElementById('M_chest').innerHTML;
+                        clothes_M[2] = document.getElementById('M_armhole').innerHTML;
+                        clothes_M[3] = document.getElementById('M_shoulder').innerHTML;
+                        clothes_M[4] = document.getElementById('M_length').innerHTML;
+                        clothes_M[5] = document.getElementById('M_arm').innerHTML;
+
+                        clothes_L[0] = 'L';
+                        clothes_L[1] = document.getElementById('L_chest').innerHTML;
+                        clothes_L[2] = document.getElementById('L_armhole').innerHTML;
+                        clothes_L[3] = document.getElementById('L_shoulder').innerHTML;
+                        clothes_L[4] = document.getElementById('L_length').innerHTML;
+                        clothes_L[5] = document.getElementById('L_arm').innerHTML;
 
                         switch(size) {
                             // size에 저장된 값으로 해당 사이즈의 치수 값들을 테이블에서 가져와 콘솔에 출력
@@ -261,6 +386,28 @@ include('top.inc');
                             user_size[3] = document.getElementById('U_thigh').innerHTML;
                             user_size[4] = document.getElementById('U_crotch').innerHTML;
 
+                            clothes_S[0] = 'S';
+                            clothes_S[1] = document.getElementById('S_hip').innerHTML;
+                            clothes_S[2] = document.getElementById('S_thigh').innerHTML;
+                            clothes_S[3] = document.getElementById('S_waist').innerHTML;
+                            clothes_S[4] = document.getElementById('S_crotch').innerHTML;
+                            clothes_S[5] = document.getElementById('S_length').innerHTML;
+
+                            clothes_M[0] = 'M';
+                            clothes_M[1] = document.getElementById('M_hip').innerHTML;
+                            clothes_M[2] = document.getElementById('M_thigh').innerHTML;
+                            clothes_M[3] = document.getElementById('M_waist').innerHTML;
+                            clothes_M[4] = document.getElementById('M_crotch').innerHTML;
+                            clothes_M[5] = document.getElementById('M_length').innerHTML;
+
+                            clothes_L[0] = 'L';
+                            clothes_L[1] = document.getElementById('L_hip').innerHTML;
+                            clothes_L[2] = document.getElementById('L_thigh').innerHTML;
+                            clothes_L[3] = document.getElementById('L_waist').innerHTML;
+                            clothes_L[4] = document.getElementById('L_crotch').innerHTML;
+                            clothes_L[5] = document.getElementById('L_length').innerHTML;
+
+
                             switch(size) {
                             // size에 저장된 값으로 해당 사이즈의 치수 값들을 테이블에서 가져와 콘솔에 출력
                             case 'S':
@@ -293,9 +440,187 @@ include('top.inc');
                       break;
                     }
 
-                    drawGraph(user_size, clothes_size, size, type);
+                    var result_1 = compareSize(type, user_size, clothes_S);
+                    var result_2 = compareSize(type, user_size, clothes_M);
+                    var result_3 = compareSize(type, user_size, clothes_L);
 
-///////////////////////////////////////
+                    total_result = getMaxValue(result_1, result_2, result_3); //total_result[0]
+                    $("#size_select").val(total_result[0]);
+                    size = total_result[0];
+
+                    switch(type) {
+                      case 'D':
+                      case 'T':
+                        user_size[0] = document.getElementById('U_length').innerHTML;
+                        user_size[1] = document.getElementById('U_shoulder').innerHTML;
+                        user_size[2] = document.getElementById('U_chest').innerHTML;
+                        user_size[3] = document.getElementById('U_armhole').innerHTML;
+                        user_size[4] = document.getElementById('U_arm').innerHTML;
+
+                        clothes_S[0] = 'S';
+                        clothes_S[1] = document.getElementById('S_chest').innerHTML;
+                        clothes_S[2] = document.getElementById('S_armhole').innerHTML;
+                        clothes_S[3] = document.getElementById('S_shoulder').innerHTML;
+                        clothes_S[4] = document.getElementById('S_length').innerHTML;
+                        clothes_S[5] = document.getElementById('S_arm').innerHTML;
+
+                        clothes_M[0] = 'M';
+                        clothes_M[1] = document.getElementById('M_chest').innerHTML;
+                        clothes_M[2] = document.getElementById('M_armhole').innerHTML;
+                        clothes_M[3] = document.getElementById('M_shoulder').innerHTML;
+                        clothes_M[4] = document.getElementById('M_length').innerHTML;
+                        clothes_M[5] = document.getElementById('M_arm').innerHTML;
+
+                        clothes_L[0] = 'L';
+                        clothes_L[1] = document.getElementById('L_chest').innerHTML;
+                        clothes_L[2] = document.getElementById('L_armhole').innerHTML;
+                        clothes_L[3] = document.getElementById('L_shoulder').innerHTML;
+                        clothes_L[4] = document.getElementById('L_length').innerHTML;
+                        clothes_L[5] = document.getElementById('L_arm').innerHTML;
+
+                        switch(size) {
+                            // size에 저장된 값으로 해당 사이즈의 치수 값들을 테이블에서 가져와 콘솔에 출력
+                            case 'S':
+                              clothes_size[0] = document.getElementById('S_length').innerHTML;
+                              clothes_size[1] = document.getElementById('S_shoulder').innerHTML;
+                              clothes_size[2] = document.getElementById('S_chest').innerHTML;
+                              clothes_size[3] = document.getElementById('S_armhole').innerHTML;
+                              clothes_size[4] = document.getElementById('S_arm').innerHTML;
+                            break;
+
+                            case 'M':
+                              clothes_size[0] = document.getElementById('M_length').innerHTML;
+                              clothes_size[1] = document.getElementById('M_shoulder').innerHTML;
+                              clothes_size[2] = document.getElementById('M_chest').innerHTML;
+                              clothes_size[3] = document.getElementById('M_armhole').innerHTML;
+                              clothes_size[4] = document.getElementById('M_arm').innerHTML;
+                            break;
+
+                            case 'L':
+                              clothes_size[0] = document.getElementById('L_length').innerHTML;
+                              clothes_size[1] = document.getElementById('L_shoulder').innerHTML;
+                              clothes_size[2] = document.getElementById('L_chest').innerHTML;
+                              clothes_size[3] = document.getElementById('L_armhole').innerHTML;
+                              clothes_size[4] = document.getElementById('L_arm').innerHTML;
+                            break;
+                        }
+                      break;
+
+                      case 'B':
+                            user_size[0] = document.getElementById('U_length').innerHTML;
+                            user_size[1] = document.getElementById('U_waist').innerHTML;
+                            user_size[2] = document.getElementById('U_hip').innerHTML;
+                            user_size[3] = document.getElementById('U_thigh').innerHTML;
+                            user_size[4] = document.getElementById('U_crotch').innerHTML;
+
+                            clothes_S[0] = 'S';
+                            clothes_S[1] = document.getElementById('S_hip').innerHTML;
+                            clothes_S[2] = document.getElementById('S_thigh').innerHTML;
+                            clothes_S[3] = document.getElementById('S_waist').innerHTML;
+                            clothes_S[4] = document.getElementById('S_crotch').innerHTML;
+                            clothes_S[5] = document.getElementById('S_length').innerHTML;
+
+                            clothes_M[0] = 'M';
+                            clothes_M[1] = document.getElementById('M_hip').innerHTML;
+                            clothes_M[2] = document.getElementById('M_thigh').innerHTML;
+                            clothes_M[3] = document.getElementById('M_waist').innerHTML;
+                            clothes_M[4] = document.getElementById('M_crotch').innerHTML;
+                            clothes_M[5] = document.getElementById('M_length').innerHTML;
+
+                            clothes_L[0] = 'L';
+                            clothes_L[1] = document.getElementById('L_hip').innerHTML;
+                            clothes_L[2] = document.getElementById('L_thigh').innerHTML;
+                            clothes_L[3] = document.getElementById('L_waist').innerHTML;
+                            clothes_L[4] = document.getElementById('L_crotch').innerHTML;
+                            clothes_L[5] = document.getElementById('L_length').innerHTML;
+
+
+                            switch(size) {
+                            // size에 저장된 값으로 해당 사이즈의 치수 값들을 테이블에서 가져와 콘솔에 출력
+                            case 'S':
+                              clothes_size[0] = document.getElementById('S_length').innerHTML;
+                              clothes_size[1] = document.getElementById('S_waist').innerHTML;
+                              clothes_size[2] = document.getElementById('S_hip').innerHTML;
+                              clothes_size[3] = document.getElementById('S_thigh').innerHTML;
+                              clothes_size[4] = document.getElementById('S_crotch').innerHTML;
+                            break;
+
+                            case 'M':
+                              clothes_size[0] = document.getElementById('M_length').innerHTML;
+                              clothes_size[1] = document.getElementById('M_waist').innerHTML;
+                              clothes_size[2] = document.getElementById('M_hip').innerHTML;
+                              clothes_size[3] = document.getElementById('M_thigh').innerHTML;
+                              clothes_size[4] = document.getElementById('M_crotch').innerHTML;
+                            break;
+
+                            case 'L':
+                              clothes_size[0] = document.getElementById('L_length').innerHTML;
+                              clothes_size[1] = document.getElementById('L_waist').innerHTML;
+                              clothes_size[2] = document.getElementById('L_hip').innerHTML;
+                              clothes_size[3] = document.getElementById('L_thigh').innerHTML;
+                              clothes_size[4] = document.getElementById('L_crotch').innerHTML;
+                            break;
+                            }
+                      break;
+
+                      default:
+                      break;
+                    }
+
+
+                    
+                      if(type =='D' || type =='T'){
+                      if(user_size[2]/clothes_size[2]>1){
+                        if(user_size[3]/clothes_size[3]>1){
+                            $('#send_user_message').text('가슴과 암홀이 작을 수 있어요!!');
+                            $('#send_user_message').removeClass();
+                            $('#send_user_message').addClass('text-center py-5 alert alert-danger');
+                        }else{
+                            $('#send_user_message').text('가슴이 작을 수 있어요!');
+                            $('#send_user_message').removeClass();
+                            $('#send_user_message').addClass('text-center py-5 alert alert-danger');
+                        }
+                      }else if(user_size[3]/clothes_size[3]>1){
+                          $('#send_user_message').text('암홀이 작을 수 있어요');
+                          $('#send_user_message').removeClass();
+                          $('#send_user_message').addClass('text-center py-5 alert alert-danger');
+                      }else{
+                          $('#send_user_message').text('전체적으로 옷이 잘 맞습니다.');
+                          $('#send_user_message').removeClass();
+                          $('#send_user_message').addClass('text-center py-5 alert alert-primary');
+                      }
+                    }else if(type=='B'){
+                      if(user_size[2]/clothes_size[2]>1){
+                        if(user_size[3]/clothes_size[3]>1){
+                            $('#send_user_message').text('엉덩이와 허벅지가 작을 수 있어요!!');
+                            $('#send_user_message').removeClass();
+                            $('#send_user_message').addClass('text-center py-5 alert alert-danger');
+                        }else{
+                            $('#send_user_message').text('엉덩이가 작을 수 있어요!');
+                            $('#send_user_message').removeClass();
+                            $('#send_user_message').addClass('text-center py-5 alert alert-danger');
+                        }
+                      }else if(user_size[3]/clothes_size[3]>1){
+                        $('#send_user_message').text('허벅지가 작을 수 있어요!!');
+                        $('#send_user_message').removeClass();
+                        $('#send_user_message').addClass('text-center py-5 alert alert-danger');
+                      }else{
+                        $('#send_user_message').text('전체적으로 옷이 잘 맞습니다.');
+                        $('#send_user_message').removeClass();
+                        $('#send_user_message').addClass('text-center py-5 alert alert-primary');
+                      }
+                    }
+
+
+
+
+
+                    console.log('최종22: '+total_result[0], Math.round(total_result[1]*100)/100);
+
+
+
+
+                    drawGraph(user_size, clothes_size, size, type);
 
 
 
@@ -305,6 +630,9 @@ include('top.inc');
                         size = index.options[index.selectedIndex].value;
                         console.log("* 선택 사이즈: " + size);
 
+
+                      //  compareSize(size, user_size, clothes_size); //*****
+
                     // 의류의 코드로 구분
                     switch(type) {
                       case 'D':
@@ -383,6 +711,51 @@ include('top.inc');
                     }
 
 
+                    if(type =='D' || type =='T'){
+                      if(user_size[2]/clothes_size[2]>1){
+                        if(user_size[3]/clothes_size[3]>1){
+                            $('#send_user_message').text('가슴과 암홀이 작을 수 있어요!!');;
+                            $('#send_user_message').removeClass();
+                            $('#send_user_message').addClass('text-center py-5 alert alert-danger');
+                        }else{
+                            $('#send_user_message').text('가슴이 작을 수 있어요!');
+                            $('#send_user_message').removeClass();
+                            $('#send_user_message').addClass('text-center py-5 alert alert-danger');
+                        }
+                      }else if(user_size[3]/clothes_size[3]>1){
+                          $('#send_user_message').text('암홀이 작을 수 있어요');
+                          $('#send_user_message').removeClass();
+                          $('#send_user_message').addClass('text-center py-5 alert alert-danger');
+                      }else{
+                          $('#send_user_message').text('전체적으로 옷이 잘 맞습니다.');
+                          $('#send_user_message').removeClass();
+                          $('#send_user_message').addClass('text-center py-5 alert alert-primary');
+                      }
+                    }else if(type=='B'){
+                      if(user_size[2]/clothes_size[2]>1){
+                        if(user_size[3]/clothes_size[3]>1){
+                            $('#send_user_message').text('엉덩이와 허벅지가 작을 수 있어요!!');
+                            $('#send_user_message').removeClass();
+                            $('#send_user_message').addClass('text-center py-5 alert alert-danger');
+                        }else{
+                            $('#send_user_message').text('엉덩이가 작을 수 있어요!');
+                            $('#send_user_message').removeClass();
+                            $('#send_user_message').addClass('text-center py-5 alert alert-danger');
+                        }
+                      }else if(user_size[3]/clothes_size[3]>1){
+                        $('#send_user_message').text('허벅지가 작을 수 있어요!!');
+                        $('#send_user_message').removeClass();
+                        $('#send_user_message').addClass('text-center py-5 alert alert-danger');
+                      }else{
+                        $('#send_user_message').text('전체적으로 옷이 잘 맞습니다.');
+                        $('#send_user_message').removeClass();
+                        $('#send_user_message').addClass('text-center py-5 alert alert-primary');
+                      }
+                    }
+
+
+
+
                       console.log("* 선택된 사이즈의 상세 치수들 ");
                       for(var i = 0; i < 5; i++)
                         console.log(clothes_size[i]);
@@ -390,11 +763,85 @@ include('top.inc');
                       console.log("* 사용자의 상세 치수들 ");
                       for(var i = 0; i < 5; i++)
                         console.log(user_size[i]);
-;
                       // 그래프 그리는 함수
                       drawGraph(user_size, clothes_size, size, type);
                     });
                   });
+
+                  function getMaxValue(result1, result2, result3){
+                    var a = [result1[0], result1[1]];
+                    var b = [result2[0], result2[1]];
+                    var c = [result3[0], result2[1]];
+                    var max = a;
+                    max = (a[1] > b[1] && a[1] > c[1]) ? a : (b[1] > c[1]) ? b : c;
+                    return max;
+                  }
+
+                  function compareAbsValue(val1, val2){
+                    if((val1/val2)>1) //옷이 작다는거야!
+                      return Math.abs(2-(val1/val2));
+                    else
+                      return val1/val2;
+                  }
+
+                  //clothes-S,M,L을 받음
+                  function compareSize(type, user_size, clothes_size){
+                    var result=[];
+                    /////////////////////////////////////
+                    /////////////////////////////////////
+                    /////////////////////////////////////
+                    // default weights value
+                    var weight_top_length = 0.075;
+                    var weight_top_arm = 0.075;
+                    var weight_bottom_length = 0.075;
+                    var weight_bottom_crotch = 0.075;
+
+                    var p_top_length =  document.getElementById('p_top_length').value;
+                    var p_top_arm =  document.getElementById('p_top_arm').value;
+                    var p_bottom_length =  document.getElementById('p_bottom_length').value;
+                    var p_bottom_crotch =  document.getElementById('p_bottom_crotch').value;
+
+                    weight_top_length = p_top_length;
+                    weight_top_arm = p_top_arm;
+                    weight_bottom_length = p_bottom_length;
+                    weight_bottom_crotch = p_bottom_crotch;
+
+                    console.log("상의총장가중치: " + weight_top_length +", 소매가중치:" + weight_top_arm);
+                    console.log("하의총장가중치: " + weight_bottom_length +", 밑위가중치:" + weight_bottom_crotch);
+                    /////////////////////////////////////
+                    /////////////////////////////////////
+                    /////////////////////////////////////
+                    
+                    switch(type){
+                      case 'T':
+                      case 'D':
+                        result.push(clothes_size[0]); //s,m,l
+                        var val_1 = compareAbsValue(user_size[2],clothes_size[1])*0.4; //가슴(40%)
+                        var val_2 = compareAbsValue(user_size[3],clothes_size[2])*0.25; //암홀(25%)
+                        var val_3 = compareAbsValue(user_size[1],clothes_size[3])*0.2; //어깨(20%)
+                        var val_4 = compareAbsValue(user_size[0],clothes_size[4])*weight_top_length; //총장(7.5%)
+                        var val_5 = compareAbsValue(user_size[4],clothes_size[5])*weight_top_arm; //소매길이(7.5%)
+
+                        var total_val = val_1+val_2+val_3+val_4+val_5;
+
+                        result.push(total_val);
+                        return result;
+                        break;
+
+                      case 'B': //엉덩이 허벅지  허리 밑위 총장
+                        result.push(clothes_size[0]); //s,m,l
+                        var val_1 = compareAbsValue(user_size[2],clothes_size[1])*0.4; //엉덩이(40%)
+                        var val_2 = compareAbsValue(user_size[3],clothes_size[2])*0.25; //허벅지(25%)
+                        var val_3 = compareAbsValue(user_size[1],clothes_size[3])*0.2; //허리(20%)
+                        var val_4 = compareAbsValue(user_size[4],clothes_size[4])*weight_bottom_crotch; //밑위(7.5%)
+                        var val_5 = compareAbsValue(user_size[0],clothes_size[5])*weight_bottom_length; //총장(7.5%)
+                        var total_val = val_1+val_2+val_3+val_4+val_5;
+                        result.push(total_val);
+                        return result;
+                        break;
+
+                    }
+                  }
 
                   // 그래프를 그리는 함수  (사용자 치수 배열, 옷 치수 배열, 옷 사이즈, 의류 분류)
                   // 계속 갱신 되어야 한다. (나중에 onChange() 안에서 호출해야함.)
@@ -526,6 +973,7 @@ include('top.inc');
 
                 </script>
                 </div>
+                <div class="text-center py-5" id="send_user_message"></div>
                 <div class="text-center py-5">
                   <button type="button" class="btn btn-lg btn-sub">
                     <img class="btn-img" src="assets/card.png">

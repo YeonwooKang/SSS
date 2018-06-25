@@ -90,6 +90,11 @@ class UserDao {
 
 				$u->setHeight($row['height']);
 				$u->setWeight($row['weight']);
+
+				$u->setPriorityTopLength($row['p_top_length']);
+				$u->setPriorityArm($row['p_arm']);
+				$u->setPriorityBottomLength($row['p_bottom_length']);
+				$u->setPriorityCrotch($row['p_crotch']);
 			}
 
 		} catch (PDOException $e){
@@ -107,7 +112,7 @@ class UserDao {
 		$this->connect();
 
 		try {
-			$sql = "UPDATE User set pw=?, name=?, top=?, shoulder=?, chest=?, armhole=?, arm=?, bottom=?, waist=?, hip=?, thigh=?, crotch=?, height=?, weight=? WHERE id=?";
+			$sql = "UPDATE User set pw=?, name=?, top=?, shoulder=?, chest=?, armhole=?, arm=?, bottom=?, waist=?, hip=?, thigh=?, crotch=?, height=?, weight=?, p_top_length=?, p_arm=?, p_bottom_length=?, p_crotch=? WHERE id=?";
 
 			$stm = $this->pdo->prepare($sql);
 
@@ -129,7 +134,12 @@ class UserDao {
 			$stm->bindValue(13, $u->getHeight());
 			$stm->bindValue(14, $u->getWeight());
 
-			$stm->bindValue(15, $u->getId());
+			$stm->bindValue(15, $u->getPriorityTopLength());
+			$stm->bindValue(16, $u->getPriorityArm());
+			$stm->bindValue(17, $u->getPriorityBottomLength());
+			$stm->bindValue(18, $u->getPriorityCrotch());
+
+			$stm->bindValue(19, $u->getId());
 
 			$stm->execute();
 

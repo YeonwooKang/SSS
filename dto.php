@@ -27,6 +27,12 @@ class User {
 	private $height;
 	private $weight;
 
+	// 선호
+	private $p_top_length;
+	private $p_arm;
+	private $p_bottom_length;
+	private $p_crotch;
+
 	// Construct
 	public function __construct($id, $pw, $name) {
 		$this->id = $id;
@@ -176,7 +182,39 @@ class User {
 
 	public function getWeight() {
 		return $this->weight;
-	}		
+	}
+
+	public function setPriorityTopLength($priority) {
+			$this->p_top_length = $priority;
+	}
+
+	public function getPriorityTopLength() {
+		return $this->p_top_length;
+	}	
+
+	public function setPriorityArm($priority) {
+			$this->p_arm = $priority;
+	}
+
+	public function getPriorityArm() {
+		return $this->p_arm;
+	}	
+	
+	public function setPriorityBottomLength($priority) {
+			$this->p_bottom_length = $priority;
+	}
+
+	public function getPriorityBottomLength() {
+		return $this->p_bottom_length;
+	}	
+
+	public function setPriorityCrotch($priority) {
+			$this->p_crotch = $priority;
+	}
+
+	public function getPriorityCrotch() {
+		return $this->p_crotch;
+	}	
 }
 
 // Top Class

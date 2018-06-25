@@ -123,7 +123,23 @@
                 <input type="text" class="form-control" id="height" placeholder="" name="height" value="<?php print $this->u->getHeight();?>"required>
               </div>
             </div>    
-
+            <hr class="mb-4">
+            <h4 class="mb-3">Order of Priority</h4>
+            <p calss="lead text-muted"><small>Please select the parts of size that are more important for you.</small></p>
+              <div class="col-md-4 mb-3">
+              <label for="height"><strong>Top</strong></label><br>
+                	<input type="radio" name="top_priority" value="p_top_length" id="p_top_length"
+                	<?php if($this->u->getPriorityTopLength() == true) print 'checked'?> required><label for="p_top_length"> &nbsp;&nbsp;Length</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                	<input type="radio" name="top_priority" value="p_arm" id="p_arm"
+                	<?php if($this->u->getPriorityArm() == true) print 'checked'?>><label for="p_arm"> &nbsp;&nbsp;Arm</label>
+              </div>
+              <div class="col-md-4 mb-3">
+              <label for="height"><strong>Bottom</strong></label><br>
+                	<input type="radio" name="bottom_priority" value="p_bottom_length" id="p_bottom_length"
+                	<?php if($this->u->getPriorityBottomLength() == true) print 'checked'?> required><label for="p_bottom_length"> &nbsp;&nbsp;Length</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                	<input type="radio" name="bottom_priority" value="p_crotch" id="p_crotch"
+                	<?php if($this->u->getPriorityCrotch() == true) print 'checked'?>><label for="p_crotch"> &nbsp;&nbsp;Crotch</label>
+              </div>
             <div class="mb-4 text-center btn-area">
               <button class="btn btn-sub btn-lg" type="submit">Update</button>
             </div>
