@@ -161,7 +161,7 @@ class ProductDao {
 	// Connectiong method
 	public function connect() {
 		try{
-			$this->pdo = new PDO('mysql:host=awsdb.crqri6xcz2ih.ap-northeast-2.rds.amazonaws.com;dbname=awsdb;charset=utf8', 'root', 'ywmj2015');
+			$this->pdo = new PDO('mysql:host=--', '-', '-');
 			$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			$this->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 		}catch (PDOException $e){
