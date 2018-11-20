@@ -9,10 +9,10 @@ require_once 'dto.php';
 // would be used to check login, signing up, modify user info etc.
 class UserDao {
 	// Database MySQL server information
-	//private $servername = "awsdb.crqri6xcz2ih.ap-northeast-2.rds.amazonaws.com"; // AWS RDS server
-	//private $username = "root";
-	//private $password = "ywmj2015";
-	//private $dbname = "awsdb";
+	//private $servername = "---"; // AWS RDS server
+	//private $username = "-";
+	//private $password = "-";
+	//private $dbname = "-";
 
 	// connection object
 	private $pdo = null;
@@ -20,7 +20,7 @@ class UserDao {
 	// Connectiong method
 	public function connect() {
 		try{
-			$this->pdo = new PDO('mysql:host=awsdb.crqri6xcz2ih.ap-northeast-2.rds.amazonaws.com;dbname=awsdb;charset=utf8', 'root', 'ywmj2015');
+			$this->pdo = new PDO('mysql:host=------;dbname=---;charset=utf8', '---', '---');
 			$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			$this->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 		}catch (PDOException $e){
